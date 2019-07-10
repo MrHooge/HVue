@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Mini Vue</title>
+</head>
+
+<body>
+  <div id="app">{{test}}
+    <p h-text="test"></p>
+    <p h-html="html"></p>
+    <p>
+      <input type="text" h-model="test">
+    </p>
+    <p>
+      <button @click="onClick">按钮</button>
+    </p>
+  </div>
+  <script src="HVue.js"></script>
+  <script src="compile.js"></script>
+  <script>
+    const o = new HVue({
+      el: '#app',
+      data: {
+        test: 'bababab',
+        foo: {
+          bar: 'bar'
+        },
+        html: '<p>html<p>'
+      },
+      methods: {
+        onClick() {
+          alert('您点击了按钮！');
+        }
+      }
+    })
+    console.log(o.$data.test)
+    o.$data.test = 'Hello World!'
+    console.log(o.$data.test)
+    console.log(o.$data.foo.bar)
+    o.$data.foo.bar = 'Hello Bar!'
+    console.log(o.$data.foo.bar)
+
+  </script>
+</body>
+
+</html>
